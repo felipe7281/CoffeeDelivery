@@ -1,14 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './global.css'
+import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
+
+import './styles/themes/global.ts'
+import { defaultTheme } from './styles/themes/default'
+import { GlobalStyle } from './styles/themes/global'
 
 export function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <div className="App">
-      <h1>Hello, Bruce!</h1>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <BrowserRouter>
+        <Router />
+        <GlobalStyle />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
