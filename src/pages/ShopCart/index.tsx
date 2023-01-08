@@ -1,5 +1,5 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from "phosphor-react";
-import { ShoopingCartAdress, ShoopingCartAdressPlusPayment, ShoopingCartBillDetails, ShoopingCartBillDiscriminatedValue, ShoopingCartBillTotalValue, ShoopingCartContainer, ShoopingCartOrderInputsBox, ShoopingCartOrderSummary, ShoopingCartOrderSummaryBox, ShoopingCartPaymentMode, ShoopingCartTitle, ShoppingCartAdressInputCep, ShoppingCartAdressInputCity, ShoppingCartAdressInputComplement, ShoppingCartAdressInputDistrict, ShoppingCartAdressInputNumber, ShoppingCartAdressInputStreet, ShoppingCartAdressInputUF, ShoppingCartPaymentFormInput } from "./styles";
+import { ShoopingCartAdress, ShoopingCartAdressPlusPayment, ShoopingCartBillDetails, ShoopingCartBillDiscriminatedValue, ShoopingCartBillTotalValue, ShoopingCartContainer, ShoopingCartOrderInputsBox, ShoopingCartOrderSummary, ShoopingCartOrderSummaryBox, ShoopingCartPaymentMode, ShoopingCartSelectedProducts, ShoopingCartTitle, ShoppingCartAdressInputCep, ShoppingCartAdressInputCity, ShoppingCartAdressInputComplement, ShoppingCartAdressInputDistrict, ShoppingCartAdressInputNumber, ShoppingCartAdressInputStreet, ShoppingCartAdressInputUF, ShoppingCartPaymentFormInput, ShoppingCartSubmitButton } from "./styles";
 
 import imgex from '../../assets/images/arabe.png'
 import { Divider } from "@mui/material";
@@ -67,19 +67,19 @@ export function ShopCart() {
                 
                 <ShoopingCartOrderSummaryBox>
                     <div>
-                         <span>
-                             <img src={imgex} alt="" />
-                             <div>
+                         <ShoopingCartSelectedProducts>
+                            <img src={imgex} alt="" width={64} height={64}/>
+                            <div>
                                 <p>Expresso tradicional</p>
-                                <div>
-                                    <input type="number" />
-                                    <div><Trash/><p>REMOVER</p></div>
-                                </div>
-                                <div>
-                                    <p>R$ 9,90</p>
-                                </div>
-                             </div>
-                         </span>
+                                <span>
+                                    <input type="number" min={0}/>
+                                    <div className="deleteProduct"><Trash size={16} className="trashIcon"/><p>REMOVER</p></div>
+                                </span>
+                            </div>  
+                            <p className="itemPrice">R$ 9,90</p>
+                                
+                             
+                         </ShoopingCartSelectedProducts>
                         <Divider/>
                     </div>
                     <ShoopingCartBillDetails>
@@ -95,7 +95,7 @@ export function ShopCart() {
                             <p>Total</p>
                             <p>R$ 33,20</p>
                         </ShoopingCartBillTotalValue>
-                        <button>Confirmar Pedido</button>
+                        <ShoppingCartSubmitButton>Confirmar Pedido</ShoppingCartSubmitButton>
                     </ShoopingCartBillDetails>
                    
                     

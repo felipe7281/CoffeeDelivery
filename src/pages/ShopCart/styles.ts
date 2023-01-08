@@ -81,8 +81,11 @@ export const ShoopingCartOrderSummary = styled.div`
 `
 export const ShoopingCartOrderSummaryBox = styled.div`
    width: 28rem;
-   height: 31.125rem;
+   height: fit-content;
    background: ${(props) => props.theme['base-card']};
+   border-radius: 6px 44px; 
+   
+
     
 `
 export const ShoopingCartOrderInputsBox = styled.div`
@@ -185,5 +188,75 @@ export const ShoopingCartBillTotalValue = styled.span`
 
 `
 
-
+export const ShoppingCartSubmitButton= styled.button`
+   width: 23rem;
+   height: 2.875rem;
+   background: ${(props) => props.theme['yellow']};
+   color: ${(props) => props.theme['white']};
+   font-family: 'Roboto', sans-serif;
+   font-size: 0.875rem;
+   border: none;
+   margin-top: 0.5rem;
+   margin-bottom: 2.5rem;
+   border-radius: 0.375rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
    
+
+
+` 
+export const ShoopingCartSelectedProducts = styled.span`
+   display: flex;
+   padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+   gap: 1.25rem;
+   
+
+   span{
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+
+   }
+   input{
+      width: 4.5rem;
+      height: 2rem;
+      border: none;
+      border-radius: 0.375rem;
+      background: ${(props) => props.theme['base-button']};
+      color: ${(props) => props.theme['base-title']};
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+
+
+   }
+   div{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+   }
+   .deleteProduct{
+      width: 5.6875rem;
+      height: 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: ${(props) => props.theme['base-button']};
+      color: ${(props) => props.theme['base-text']};  
+      font-size: 0.75rem;
+     
+   }
+   .trashIcon{
+      color: ${(props) => props.theme['purple']}; 
+   }
+   .itemPrice{
+      font-size: 1rem;
+      color: ${(props) => props.theme['base-text']};  
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      margin-left: 2rem;;
+
+   }
+`
