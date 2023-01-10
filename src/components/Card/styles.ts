@@ -33,6 +33,8 @@ export const CoffeeObs = styled.div`
     font-weight: bold;
     font-size: 0.75rem;
     margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
 `
 
 export const CoffeeName = styled.div`
@@ -86,6 +88,7 @@ export const CoffeeQuantity = styled.input`
     background: ${(props) => props.theme['base-button']};
     color: ${(props) => props.theme['base-title']};
     text-align: center;
+    
 `
 export const AddToCartButton = styled.button`
     height: 2.375rem;
@@ -98,3 +101,24 @@ export const AddToCartButton = styled.button`
     align-items: center;
     justify-content: center;
 `
+export const AddCartWrapper = styled.div`
+  width: 7.5rem;
+  display: flex;
+  gap: 0.5rem;
+  > button {
+    width: 2.375rem;
+    height: 2.375rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${(props) => props.theme['purple-dark']};
+    color: ${(props) => props.theme['base-card']};
+    border-radius: 6px;
+    margin-left: 0.3rem;
+    transition: 0.4s;
+    &:hover {
+      background: ${(props) => props.theme['purple']};
+    }
+  }
+`;

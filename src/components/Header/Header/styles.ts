@@ -5,10 +5,15 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
     background-color: ${(props) => props.theme['white']};
-    margin: 2rem 10rem; 
+    padding: 2rem 10rem; 
     @media screen and (max-width: 776px) {
         margin: 1rem;
     }     
+    position: sticky;
+    top: 0;
+    
+    left: 0;
+    z-index: 5;
    
 `
 export const SpanContainer = styled.span`

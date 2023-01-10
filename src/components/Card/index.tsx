@@ -1,37 +1,62 @@
-import { AddToCartButton, CardContainer, CoffeeDescription, CoffeeImage, CoffeeName, CoffeeObs, CoffeePrice, CoffeePricePrefix, CoffeePriceValue, CoffeeQuantity, OrderArea } from "./styles";
+import { useState } from "react";
+import { AddCartWrapper, AddToCartButton, CardContainer, CoffeeDescription, CoffeeImage, CoffeeName, CoffeeObs, CoffeePrice, CoffeePricePrefix, CoffeePriceValue, CoffeeQuantity, OrderArea } from "./styles";
 
 import { ShoppingCart } from "phosphor-react";
+import { useCart } from "../../hooks/useCart";
+
+import { QuantityInput } from "../QuantityInput";
 
 
-
+export interface Coffee{
+    id: string | number
+    tags: string[]
+    name: string
+    description: string
+    photo: string;
+    price: number
+}
 interface CardProps{
-    id?: string 
-    name:string
-    price:number
-    obs1: string | undefined
-    obs2?: string | null
-    obs3?: string | null
-    description:string
-    photo: string
+  coffee: Coffee
 }
 
-export function Card( {name, obs1, obs2, obs3, description, price, photo}:CardProps ){ 
 
-   
 
+export function Card( {coffee}:CardProps ){ 
+    const [quantity, setQuantity] = useState(0)
+
+    function handleIncreaseQuantity(){
+        setQuantity((state) => state + 1);
+    }
+
+    function handleDecreaseQuantity(){
+        setQuantity((state) => state - 1);
+    }
+
+    const { addCoffeeToCart} = useCart();
+    function handleAddToCart(){
+        const coffeeToAdd = {
+            ...coffee,
+            quantity: 1
+        }
+        addCoffeeToCart(coffeeToAdd)
+    }
+
+  
     
     return(
         <>
            
             <CardContainer>
-                <CoffeeImage><img src={photo} alt="" width='120' height='120' /></CoffeeImage>
-                <span>
-                    <CoffeeObs>{obs1}</CoffeeObs>
-                    <CoffeeObs>{obs2}</CoffeeObs>
-                    <CoffeeObs>{obs3}</CoffeeObs>
-                </span>
-                <CoffeeName>{name}</CoffeeName>
-                <CoffeeDescription>{description}</CoffeeDescription>
+                <CoffeeImage><img src={coffee.photo} alt="" width='120' height='120' /></CoffeeImage>
+                
+                <CoffeeObs> {coffee.tags.map(tag => <span key={`${coffee.id}${tag}`}>{tag}</span>)}</CoffeeObs>
+
+                    {/* <CoffeeObs>{coffee.tags[0]}</CoffeeObs>
+                    <CoffeeObs>{coffee.tags[1]}</CoffeeObs>
+                    <CoffeeObs>{coffee.tags[2]}</CoffeeObs> */}
+                
+                <CoffeeName>{coffee.name}</CoffeeName>
+                <CoffeeDescription>{coffee.description}</CoffeeDescription>
 
                 <OrderArea>
                     <CoffeePrice>
@@ -39,13 +64,22 @@ export function Card( {name, obs1, obs2, obs3, description, price, photo}:CardPr
                             R$
                         </CoffeePricePrefix>
                         <CoffeePriceValue>
-                            {price.toFixed(2)}
+                            {coffee.price.toFixed(2)}
                         </CoffeePriceValue>
                     </CoffeePrice>
-                    <CoffeeQuantity type="number" step={1} min={0} >
-
-                    </CoffeeQuantity>
-                    <AddToCartButton ><ShoppingCart size={22} weight="fill"/></AddToCartButton>
+                    <AddCartWrapper>
+                        <QuantityInput
+                            quantity={quantity}
+                            onIncrease={handleIncreaseQuantity}
+                            onDecrease={handleDecreaseQuantity}
+                          
+                            
+                        />
+                            <button onClick={handleAddToCart}>
+                                <ShoppingCart weight="fill" size={22} />
+                            </button>
+                    </AddCartWrapper>
+                   
                 </OrderArea>
 
             </CardContainer>

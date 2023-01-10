@@ -5,6 +5,7 @@ import { Router } from './Router'
 import './styles/themes/global.ts'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/themes/global'
+import { CartContextProvider } from './context/CartContext'
 
 export function App() {
   
@@ -12,7 +13,9 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <CartContextProvider>
+          <Router />
+        </CartContextProvider>
         <GlobalStyle />
       </BrowserRouter>
     </ThemeProvider>

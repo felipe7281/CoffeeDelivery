@@ -4,7 +4,9 @@ import { ShoopingCartAdress, ShoopingCartAdressPlusPayment, ShoopingCartBillDeta
 import imgex from '../../assets/images/arabe.png'
 import { Divider } from "@mui/material";
 
+
 export function ShopCart() {
+   
     return(
         <ShoopingCartContainer>
             <ShoopingCartAdressPlusPayment>
